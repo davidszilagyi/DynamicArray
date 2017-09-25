@@ -16,6 +16,8 @@ namespace DynamicArray
 
         void Replace(T item, int index);
 
-        void Remove(int index);  
+        void Remove(int index);
+
+        String ToString();
     }
 }
