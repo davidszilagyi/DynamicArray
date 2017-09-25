@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DynamicArray
 {
@@ -99,6 +95,12 @@ namespace DynamicArray
             return array += " ]";
         }
 
+
+        public T[] GetArray()
+        {
+            return arr;
+        }
+
         private void ValidIndex(dynamic index)
         {
             if (index >= arr.Length)
@@ -119,10 +121,11 @@ namespace DynamicArray
 
         private void ValidObject(object item)
         {
-            if (!(item is T))
+            if (item.GetType() != typeof(T))
             {
                 throw new ArrayTypeMismatchException(string.Format("Only {0} can be added to this array!", arr.GetType()));
             }
         }
+
     }
 }
