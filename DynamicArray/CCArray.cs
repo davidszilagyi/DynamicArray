@@ -40,16 +40,30 @@ namespace DynamicArray
 
         public T Get(dynamic index)
         {
-            ValidIndex();
-            for(dynamic i = 0; i < arr.Length; i++)
+            ValidIndex(index);
+            dynamic counter = 0;
+            foreach (T item in arr)
             {
-
+                if (counter == index)
+                {
+                    return item;
+                }
+                counter++;
             }
+            return default(T);
         }
 
         public void Replace(T item, dynamic index)
         {
-            throw new NotImplementedException();
+            ValidObject(item);
+            ValidIndex(index);
+            for (dynamic i = 0; i < arr.Length; i++)
+            {
+                if(i == index)
+                {
+                    arr[i] = item;
+                }
+            }
         }
 
         public void Remove(dynamic index)
@@ -91,7 +105,7 @@ namespace DynamicArray
 
         private void ValidObject(object item)
         {
-            if(!(item is T))
+            if (!(item is T))
             {
                 throw new ArrayTypeMismatchException(string.Format("Only {0} can be added to this array!", arr.GetType()));
             }
