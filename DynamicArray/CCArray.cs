@@ -59,7 +59,7 @@ namespace DynamicArray
             ValidIndex(index);
             for (dynamic i = 0; i < arr.Length; i++)
             {
-                if(i == index)
+                if (i == index)
                 {
                     arr[i] = item;
                 }
@@ -68,7 +68,18 @@ namespace DynamicArray
 
         public void Remove(dynamic index)
         {
-            throw new NotImplementedException();
+            ValidIndex(index);
+            T[] temp = new T[arr.Length - 1];
+            dynamic counter = 0;
+            for (dynamic i = 0; i < arr.Length; i++)
+            {
+                if (i != index)
+                {
+                    temp[counter] = arr[i];
+                    counter++;
+                }
+            }
+            arr = temp;
         }
 
         public override String ToString()

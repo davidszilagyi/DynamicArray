@@ -15,6 +15,8 @@ namespace DynamicArray
             ccArray.Add(3);
             Console.WriteLine(ccArray.ToString());
             Console.WriteLine(ccArray.Get(1));
+            ccArray.Remove(1);
+            Console.WriteLine(ccArray.ToString());
             Console.ReadKey();
         }
     }
