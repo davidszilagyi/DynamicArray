@@ -10,13 +10,13 @@ namespace DynamicArray
     {
         void Add(T item);
 
-        void Add(T item, int index);
+        void Add(T item, dynamic index);
 
-        T Get(int index);
+        T Get(dynamic index);
 
-        void Replace(T item, int index);
+        void Replace(T item, dynamic index);
 
-        void Remove(int index);
+        void Remove(dynamic index);
 
         String ToString();
     }

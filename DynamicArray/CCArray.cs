@@ -17,17 +17,17 @@ namespace DynamicArray
             arr[arr.Length - 1] = item;
         }
 
-        public void Add(T item, int index)
+        public void Add(T item, dynamic index)
         {
             ValidObject(item);
             ValidIndex(index);
             Resize();
             T[] temp = arr;
-            for (int i = 0; i < arr.Length; i++)
+            for (dynamic i = 0; i < arr.Length; i++)
             {
                 if (i == index)
                 {
-                    for (int k = i + 1; k <= arr.Length - 1; k++)
+                    for (dynamic k = i + 1; k <= arr.Length - 1; k++)
                     {
                         temp[k] = arr[k];
                     }
@@ -38,17 +38,21 @@ namespace DynamicArray
             arr = temp;
         }
 
-        public T Get(int index)
+        public T Get(dynamic index)
+        {
+            ValidIndex();
+            for(dynamic i = 0; i < arr.Length; i++)
+            {
+
+            }
+        }
+
+        public void Replace(T item, dynamic index)
         {
             throw new NotImplementedException();
         }
 
-        public void Replace(T item, int index)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(int index)
+        public void Remove(dynamic index)
         {
             throw new NotImplementedException();
         }
@@ -67,7 +71,7 @@ namespace DynamicArray
             return array += " ]";
         }
 
-        private void ValidIndex(int index)
+        private void ValidIndex(dynamic index)
         {
             if (index >= arr.Length)
             {
@@ -78,7 +82,7 @@ namespace DynamicArray
         private void Resize()
         {
             T[] temp = new T[arr.Length + 1];
-            for (int i = 0; i < arr.Length; i++)
+            for (dynamic i = 0; i < arr.Length; i++)
             {
                 temp[i] = arr[i];
             }
