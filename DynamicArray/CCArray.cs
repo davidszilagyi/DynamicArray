@@ -20,20 +20,23 @@ namespace DynamicArray
         public void Add(T item, dynamic index)
         {
             ValidObject(item);
-            ValidIndex(index);
+            ValidIndex(index - 1);
             Resize();
-            T[] temp = arr;
+            T[] temp = new T[arr.Length];
             for (dynamic i = 0; i < arr.Length; i++)
             {
-                if (i == index)
+                if(i == index)
                 {
-                    for (dynamic k = i + 1; k <= arr.Length - 1; k++)
-                    {
-                        temp[k] = arr[k];
-                    }
                     temp[i] = item;
                 }
-                break;
+                else if(i < index)
+                {
+                    temp[i] = arr[i];
+                }
+                else if(i > index)
+                {
+                    temp[i] = arr[i - 1];
+                }
             }
             arr = temp;
         }
